@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Simple Calculator</title>
+    <style>
+        body { font-family: Arial, sans-serif; text-align: center; margin-top: 50px; }
+        input { margin: 5px; padding: 10px; width: 200px; }
+    </style>
+</head>
+<body>
+    <h1>Simple Calculator</h1>
+    <input type="text" id="txtval1" placeholder="Value 1" />
+    <input type="text" id="txtval2" placeholder="Value 2" />
+    <div>Result: <span id="display"></span></div>
+    <div>
+        <input type="button" value="Sum" onclick="calculate('+')" />
+        <input type="button" value="Sub" onclick="calculate('-')" />
+        <input type="button" value="Mul" onclick="calculate('*')" />
+        <input type="button" value="Div" onclick="calculate('/')" />
+    </div>
+
+    <script>
+        function calculate(op) {
+            const val1 = +document.getElementById('txtval1').value || 0;
+            const val2 = +document.getElementById('txtval2').value || 0;
+            const result = op === '/' && val2 === 0 ? "Cannot divide by zero" : eval(`${val1} ${op} ${val2}`);
+            document.getElementById('display').textContent = result;
+        }
+    </script>
+</body>
+</html>
